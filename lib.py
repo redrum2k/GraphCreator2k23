@@ -11,10 +11,10 @@ class Graph:
             self.graph = nx.complete_graph(n)
         elif "дерево" in description:
             n = int(description.split()[-2])
-            self.graph = nx.balanced_tree(2, n - 1)
+            self.graph = nx.balanced_tree(n+1, 1)
         elif "граф с" in description:
             n = int(description.split()[-3])
-            self.graph = nx.connected_watts_strogatz_graph(n * 5, 4, 0.1, n)
+            self.graph = nx.caveman_graph(n, 3)
 
     def save_to_file(self, filename):
         nodes = self.graph.nodes()
